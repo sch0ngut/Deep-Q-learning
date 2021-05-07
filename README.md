@@ -5,6 +5,7 @@ An implementation of the Deep-Q algorithm for Reinforcement Learning problems as
 [Human-level control through deep reinforcement learning]: https://web.stanford.edu/class/psych209/Readings/MnihEtAlHassibis15NatureControlDeepRL.pdf
 
 As of now the agent is able to solve the [CartPole-v0]. Ideally the agent should be able to solve most Atari games such as Pong and Breakout (in process)
+
 [CartPole-v0]: https://gym.openai.com/envs/CartPole-v0/
 
 Training and evaluation can be performed using
