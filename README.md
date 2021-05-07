@@ -14,5 +14,6 @@ python train.py --env CartPole-v0
 python evaluate.py --env CartPole-v0 --path models/CartPole-v0_best.pt
 ```
 
-______________________-
+______________________
+
 The code is the result of a project as part of the course  *Reinforcement Learning* that I took at Uppsala University in the spring 2021
