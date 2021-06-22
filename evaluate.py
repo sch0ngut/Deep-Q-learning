@@ -45,12 +45,12 @@ def evaluate_policy(dqn, env, env_config, args, n_episodes, render=False, verbos
             obs_stack = torch.cat((obs_stack[:, 1:, ...], obs.unsqueeze(1)), dim=1).to(device)
 
             episode_return += reward
-        
+
         total_return += episode_return
-        
+
         if verbose:
-            print(f'Finished episode {i+1} with a total return of {episode_return}')
-    
+            print(f'Finished episode {i + 1} with a total return of {episode_return}')
+
     return total_return / n_episodes
 
 
@@ -66,10 +66,11 @@ if __name__ == '__main__':
         env = gym.wrappers.Monitor(env, './video/', video_callable=lambda episode_id: True, force=True)
 
     # Load model from provided path.
-    dqn = torch.load(args.path, map_location=torch.device('cpu'))
+    dqn = torch.load(args.path, map_location=torch.device(device))
     dqn.eval()
 
-    mean_return = evaluate_policy(dqn, env, env_config, args, args.n_eval_episodes, render=args.render and not args.save_video, verbose=True)
+    mean_return = evaluate_policy(dqn, env, env_config, args, args.n_eval_episodes,
+                                  render=args.render and not args.save_video, verbose=True)
     print(f'The policy got a mean return of {mean_return} over {args.n_eval_episodes} episodes.')
 
     env.close()
