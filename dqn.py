@@ -103,13 +103,13 @@ def optimize(dqn, target_dqn, memory, optimizer):
     next_obs = torch.stack(next_obs).squeeze().to(device)
     reward = torch.stack(reward).squeeze().to(device)
     term = torch.stack(term).int().to(device)
-    
+
     # Compute the current estimates of the Q-values for each state-action
     q_values = dqn.forward(obs).gather(1, action)
-    
+
     # Compute the Q-value targets.
     q_value_targets = reward + dqn.gamma * term * torch.max(target_dqn.forward(next_obs), dim=1).values
-    
+
     # Compute loss.
     loss = F.mse_loss(q_values.squeeze(), q_value_targets)
 
